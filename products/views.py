@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from datetime import datetime
 
+from django.shortcuts import render
+
 # Create your views here.
 
 """ MVC - Model View Controller """
@@ -19,5 +21,11 @@ def goodby(request):
     return HttpResponse("Goodbye user!")
 
 
+def main_view(request):
+    if request.method == 'GET':
+        return render(request, 'layouts/index.html')
 
+def products_view(request):
+    if request.method == 'GET':
+        return render(request, 'products/products.html')
 
