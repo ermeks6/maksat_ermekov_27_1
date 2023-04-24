@@ -1,6 +1,5 @@
 """
-URL configuration for onlinestore project.
-
+URL configuration for bloghw project.
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
 Examples:
@@ -16,15 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from products.views import now_date,hello, goodby, main_view, products_view
+from onlinestore import settings
+from products.views import main_view, product_detail_view, products_view, hello, now_date, goodby
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', main_view),
     path('hello/', hello),
     path('now_date/', now_date),
-    path('goodby/', goodby),
+    path('goodbye/', goodby),
     path('', main_view),
-    path('products/', products_view)
+    path('products/', products_view),
+    path('products/<int:id>/', product_detail_view)
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

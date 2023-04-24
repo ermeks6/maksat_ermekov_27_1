@@ -15,6 +15,9 @@
     <div class="products">
         {% for product in products %}
             <div class="card" style="width: 18rem;">
+                {% if product.image %}
+                    {{ product.image.url }}
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ product.title }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Rate: {{ product.rate }}</h6>
